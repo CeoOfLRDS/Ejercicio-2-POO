@@ -64,7 +64,7 @@ Implementación de Clases y Diagrama UML.
   * `cantidadPartidas`: `int`
   * `MAX_PARTIDAS`: `int`
 * **Métodos**:
-  * `Jugador(String, String, int)`: Constructor
+  * `Jugador(String, String, int)`
   * `registrarPuntaje(int)`: `boolean`
   * `modificarPuntaje(int, int)`: `boolean`
   * `obtenerPuntaje(int)`: `int`
@@ -81,7 +81,7 @@ Implementación de Clases y Diagrama UML.
 * **Propiedades**:
   * `jugadorActivo`: `Jugador`
 * **Métodos**:
-  * `Torneo()`: Constructor
+  * `Torneo()`
   * `crearNuevoJugador(String, String, int)`: `void`
   * `registrarPartida(int)`: `boolean`
   * `modificarPartida(int, int)`: `boolean`
@@ -107,8 +107,8 @@ La propiedad **`puntajes`** de la clase `Jugador` debe implementarse utilizando 
 
 ### 4. ¿Cuáles deben ser los modificadores de visibilidad de los miembros en cada clase?
 
-* **Atributos**: Todos los atributos de las clases (`Jugador` y `Torneo`) deben ser **privados (`-`)** para garantizar el principio de encapsulamiento.
-* **Métodos y Constructores**: Todos los métodos y constructores deben ser **públicos (`+`)** para permitir la comunicación entre clases y la interacción desde el controlador principal (`Main`).
+* **Atributos**: Todos los atributos de las clases (`Jugador` y `Torneo`) deben ser privados (`-`) para garantizar el principio de encapsulamiento.
+* **Métodos y Constructores**: Todos los métodos y constructores deben ser públicos (`+`) para permitir la comunicación entre clases y la interacción desde el controlador principal (`Main`).
 
 ---
 
@@ -129,13 +129,11 @@ La propiedad **`puntajes`** de la clase `Jugador` debe implementarse utilizando 
 #### En la clase `Main`:
 * `main`: requiere el arreglo de argumentos de línea de comandos `args` (`String[]`).
 
-*(Los demás métodos no requieren parámetros ya que operan sobre los datos almacenados en la propia instancia).*
-
 ---
 
 ### 6. ¿Cómo proveerá de valores iniciales a sus objetos? ¿Qué valores iniciales les asignará?
 
-Se proveerán valores iniciales a través de los **constructores** de cada clase:
+Se proveerán valores iniciales a través de los constructores de cada clase:
 
 * **En `Jugador(String nombre, String nickname, int edad)`**:
   * `this.nombre`: asignado con el parámetro `nombre`.
@@ -146,13 +144,13 @@ Se proveerán valores iniciales a través de los **constructores** de cada clase
   * `MAX_PARTIDAS`: inicializado con la constante `10`.
 
 * **En `Torneo()`**:
-  * `this.jugadorActivo`: inicializado en `null` (o configurado mediante `crearNuevoJugador`).
+  * `this.jugadorActivo`:configurado por `crearNuevoJugador`
 
 ---
 
 ### 7. ¿Cómo determinará cuál es la siguiente posición disponible dentro del arreglo?
 
-Utilizando el atributo entero **`cantidadPartidas`**. Debido a que los arreglos en Java manejan índices base cero (desde `0` hasta `N-1`), el valor actual de `cantidadPartidas` representa exactamente el índice de la siguiente posición libre del arreglo `puntajes`. 
+Utilizando el atributo entero `cantidadPartidas`. Debido a que los arreglos en Java manejan índices base cero (desde `0` hasta `N-1`), el valor actual de `cantidadPartidas` representa exactamente el índice de la siguiente posición libre del arreglo `puntajes`. 
 
 Por ejemplo, si `cantidadPartidas == 0`, la siguiente posición disponible es `puntajes[0]`. Al registrar el puntaje, se incrementa `cantidadPartidas++`, por lo que para el siguiente registro la posición libre será `puntajes[1]`.
 
@@ -160,9 +158,8 @@ Por ejemplo, si `cantidadPartidas == 0`, la siguiente posición disponible es `p
 
 ### 8. ¿Cómo recorrerá únicamente las posiciones del arreglo que contienen puntajes registrados?
 
-Se utilizará un bucle `for` cuyo límite superior esté determinado por el contador de partidas registradas (`cantidadPartidas`), en lugar de la capacidad total del arreglo (`puntajes.length`):
+Se utilizará un bucle `for` cuyo límite sea el contador de partidas registradas (`cantidadPartidas`):
 
 ```java
 for (int i = 0; i < cantidadPartidas; i++) {
-    // Procesar únicamente puntajes[i]
 }
